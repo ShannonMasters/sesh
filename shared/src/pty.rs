@@ -215,7 +215,7 @@ impl Pty {
             })?;
 
             // Set this process as the controling terminal
-            libc::ioctl(0, libc::TIOCSCTTY, 1)
+            libc::ioctl(0, libc::TIOCSCTTY.into(), 1)
                 .to_result()
                 .map_err(|e| {
                     io::Error::new(
